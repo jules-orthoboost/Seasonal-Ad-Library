@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Holiday 2026</title>
+<!--
+  Campaign: Holiday 2026
+  Font: Italiana (display) + Source Serif 4 (body)
+  Reference: Tennessee + Superior holiday ads - banner with $ offer, hanging ornaments, snowflakes, photo with festive accents
+  Boss copy (verbatim):
+    Headline: "Give a gift that lasts a lifetime"
+    Sub:      "Confidence is the best gift"
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #131313;
+    --charcoal: #2a2a2a;
+    --graphite: #555;
+    --mid: #898989;
+    --line: #c8c8c8;
+    --soft: #d8d8d8;
+    --paper: #ebebeb;
+    --bone: #f3f3f3;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1080px;
+    overflow: hidden;
+    background: #c8c8c8;
+    font-family: 'Source Serif 4', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .ad {
+    width: 1080px; height: 1080px;
+    background: var(--paper); color: var(--ink);
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+    background-image:
+      radial-gradient(circle, rgba(0,0,0,.04) 1px, transparent 1.5px);
+    background-size: 36px 36px;
+  }
+
+  /* Logo top */
+  .logo {
+    position: absolute; top: 50px; left: 60px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 5;
+  }
+  .logo__mark {
+    width: 56px; height: 56px;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    font-family: 'Italiana', serif;
+    font-size: 28px;
+    border-radius: 50%;
+  }
+  .logo__type {
+    font-family: 'Italiana', serif;
+    font-size: 26px; line-height: 1;
+    letter-spacing: 4px;
+  }
+  .logo__type small {
+    display: block; font-family: 'Source Serif 4', serif;
+    font-size: 9px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 600; margin-top: 6px;
+  }
+
+  /* Snowflakes scattered */
+  .snow {
+    position: absolute;
+    color: var(--ink); opacity: .25;
+    pointer-events: none;
+  }
+  .snow svg { width: 100%; height: 100%; fill: currentColor;}
+  .snow--s1 { top: 80px; right: 60px; width: 70px;}
+  .snow--s2 { top: 240px; right: 200px; width: 40px; opacity: .15;}
+  .snow--s3 { bottom: 360px; left: 60px; width: 90px; opacity: .15;}
+  .snow--s4 { bottom: 140px; right: 100px; width: 55px;}
+  .snow--s5 { bottom: 240px; left: 280px; width: 35px; opacity: .2;}
+
+  /* Banner with $ offer */
+  .banner {
+    position: absolute;
+    top: 185px; left: -40px; right: -40px;
+    background: var(--ink); color: var(--paper);
+    transform: rotate(-3deg);
+    padding: 26px 80px;
+    text-align: center;
+    box-shadow: 0 14px 40px rgba(0,0,0,.25);
+    z-index: 4;
+  }
+  .banner b {
+    font-family: 'Italiana', serif;
+    font-size: 60px; letter-spacing: -1px;
+    line-height: 1;
+  }
+  .banner span {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 28px; letter-spacing: 1px;
+    margin-left: 18px;
+  }
+
+  /* Hanging ornaments */
+  .ornaments {
+    position: absolute;
+    top: 240px; left: 0; right: 0;
+    display: flex; justify-content: center;
+    gap: 80px;
+    z-index: 3;
+  }
+  .orn {
+    position: relative;
+  }
+  .orn__string {
+    width: 1px; height: 80px;
+    background: var(--ink);
+    margin: 0 auto;
+    opacity: .5;
+  }
+  .orn__ball {
+    width: 70px; height: 70px;
+    border-radius: 50%;
+    background: var(--ink);
+    margin-top: -2px;
+    border: 4px solid var(--paper);
+    box-shadow: 0 6px 14px rgba(0,0,0,.2);
+    position: relative;
+  }
+  .orn__ball::before {
+    content: ""; position: absolute;
+    top: -8px; left: 50%; transform: translateX(-50%);
+    width: 20px; height: 12px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    border-radius: 4px 4px 0 0;
+  }
+  .orn:nth-child(2) .orn__ball { background: var(--soft); border-color: var(--ink);}
+  .orn:nth-child(3) .orn__ball { background: var(--ink);}
+  .orn:nth-child(4) .orn__ball { background: var(--paper); border-color: var(--ink);}
+  .orn:nth-child(5) .orn__ball { background: var(--ink);}
+
+  .orn:nth-child(1) .orn__string { height: 130px;}
+  .orn:nth-child(2) .orn__string { height: 175px;}
+  .orn:nth-child(3) .orn__string { height: 145px;}
+  .orn:nth-child(4) .orn__string { height: 195px;}
+  .orn:nth-child(5) .orn__string { height: 155px;}
+
+  /* Headline below */
+  .hero {
+    position: absolute;
+    bottom: 290px; left: 60px; right: 60px;
+    text-align: center;
+    z-index: 4;
+  }
+  .hero h1 {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: 96px; line-height: .95;
+    letter-spacing: 1px;
+    color: var(--ink);
+  }
+  .hero h1 .lasts {
+    font-family: 'Source Serif 4', serif;
+    font-style: italic; font-weight: 300;
+    letter-spacing: -1px;
+  }
+  .hero .sub {
+    margin-top: 20px;
+    font-family: 'Source Serif 4', serif;
+    font-style: italic;
+    font-size: 24px; color: var(--charcoal);
+  }
+
+  /* Photo zones — symmetric left + right */
+  .photo {
+    position: absolute;
+    bottom: 70px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: var(--soft);
+    background-image:
+      repeating-linear-gradient(-45deg,
+        rgba(0,0,0,.04) 0,
+        rgba(0,0,0,.04) 1px,
+        transparent 1px,
+        transparent 14px);
+    border: 4px solid var(--paper);
+    box-shadow: 0 14px 30px rgba(0,0,0,.18);
+    display: grid; place-items: center;
+    z-index: 5;
+  }
+  .photo--left  { left: 60px; }
+  .photo--right { right: 60px; }
+  .photo__lbl {
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 9px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+
+  /* Bottom CTA — centered between the two photos */
+  .footer-cta {
+    position: absolute;
+    left: 50%; transform: translateX(-50%);
+    bottom: 110px;
+    z-index: 5;
+  }
+  .footer-cta a {
+    background: var(--ink); color: var(--paper);
+    padding: 18px 32px; border-radius: 999px;
+    font-family: 'Italiana', serif;
+    font-size: 22px; letter-spacing: 2px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+  <section class="ad">
+    <div class="logo">
+      <div class="logo__mark">L</div>
+      <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+    </div>
+
+    <span class="snow snow--s1"><svg viewBox="0 0 100 100"><path d="M50 5 v90 M5 50 h90 M20 20 l60 60 M80 20 l-60 60"/><circle cx="50" cy="50" r="4"/></svg></span>
+    <span class="snow snow--s2"><svg viewBox="0 0 100 100"><path d="M50 5 v90 M5 50 h90 M20 20 l60 60 M80 20 l-60 60"/></svg></span>
+    <span class="snow snow--s3"><svg viewBox="0 0 100 100"><path d="M50 5 v90 M5 50 h90 M20 20 l60 60 M80 20 l-60 60"/><circle cx="50" cy="50" r="4"/></svg></span>
+    <span class="snow snow--s4"><svg viewBox="0 0 100 100"><path d="M50 5 v90 M5 50 h90 M20 20 l60 60 M80 20 l-60 60"/></svg></span>
+    <span class="snow snow--s5"><svg viewBox="0 0 100 100"><path d="M50 5 v90 M5 50 h90"/></svg></span>
+
+    <div class="banner">
+      <b>$X,XXX off</b>
+      <span>Giftable · Braces or Clear Aligners</span>
+    </div>
+
+    <div class="ornaments">
+      <div class="orn"><div class="orn__string"></div><div class="orn__ball"></div></div>
+      <div class="orn"><div class="orn__string"></div><div class="orn__ball"></div></div>
+      <div class="orn"><div class="orn__string"></div><div class="orn__ball"></div></div>
+      <div class="orn"><div class="orn__string"></div><div class="orn__ball"></div></div>
+      <div class="orn"><div class="orn__string"></div><div class="orn__ball"></div></div>
+    </div>
+
+    <div class="hero">
+      <h1>Give a gift that<br/><span class="lasts">lasts a lifetime.</span></h1>
+      <p class="sub">"Confidence is the best gift."</p>
+    </div>
+
+    <div class="photo photo--left">
+      <span class="photo__lbl">[ Client ]</span>
+    </div>
+
+    <div class="photo photo--right">
+      <span class="photo__lbl">[ Client ]</span>
+    </div>
+
+    <div class="footer-cta">
+      <a href="#">Gift a Smile</a>
+    </div>
+  </section>
+</body>
+</html>
+                                 

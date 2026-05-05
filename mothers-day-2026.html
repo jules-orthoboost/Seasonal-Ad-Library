@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Mother's Day 2026</title>
+<!--
+  Campaign: Mother's Day 2026
+  Font: Marcellus (display) + Manrope (UI)
+  Reference: Vibrant Orthodontics Summer ad - bold display headline + center photo + free consult pill + schedule button below
+  Boss copy (verbatim):
+    Headline: "Mom deserves to feel confident too"
+    Sub:      "Give her a reason to smile"
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #131313;
+    --charcoal: #2c2c2c;
+    --graphite: #555;
+    --mid: #898989;
+    --line: #c8c8c8;
+    --soft: #e3e1da;
+    --paper: #ece9e2;
+    --bone: #f4f1ea;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1080px;
+    overflow: hidden;
+    background: #d3d1cc;
+    font-family: 'Manrope', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .ad {
+    width: 1080px; height: 1080px;
+    background: var(--paper); color: var(--ink);
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+    padding: 50px 56px 50px;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+  }
+
+  /* abstract floral arc - left top */
+  .arc {
+    position: absolute;
+    top: -180px; left: -180px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 60px solid var(--soft);
+    pointer-events: none;
+  }
+  .arc-2 {
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 460px; height: 460px;
+    border-radius: 50%;
+    border: 30px solid var(--soft);
+    pointer-events: none;
+  }
+
+  /* Logo top center */
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    justify-content: center;
+    z-index: 5; position: relative;
+  }
+  .logo__mark {
+    width: 50px; height: 50px;
+    background: var(--ink); color: var(--paper);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Marcellus', serif;
+    font-size: 22px;
+  }
+  .logo__type {
+    font-family: 'Marcellus', serif;
+    font-size: 24px; line-height: 1;
+    letter-spacing: 4px;
+  }
+  .logo__type small {
+    display: block; font-family: 'Manrope', sans-serif;
+    font-size: 9px; letter-spacing: 5px;
+    color: var(--mid); font-weight: 600; margin-top: 6px;
+    text-transform: uppercase;
+  }
+
+  /* Heading */
+  .heading {
+    margin-top: 26px;
+    text-align: center;
+    z-index: 5; position: relative;
+  }
+  .eyebrow {
+    font-family: 'Marcellus', serif;
+    font-style: italic;
+    font-size: 22px; color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Marcellus', serif;
+    font-weight: 400;
+    font-size: 84px; line-height: 1;
+    letter-spacing: -1px;
+    color: var(--ink);
+  }
+  h1 .confident {
+    font-style: italic;
+    color: var(--charcoal);
+  }
+
+  /* Photo zone */
+  .photo {
+    margin: 22px auto 0;
+    width: 480px; height: 460px;
+    border-radius: 240px 240px 16px 16px;
+    background: var(--soft);
+    background-image:
+      repeating-linear-gradient(-45deg,
+        rgba(0,0,0,.04) 0,
+        rgba(0,0,0,.04) 1px,
+        transparent 1px,
+        transparent 14px);
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    position: relative;
+    z-index: 4;
+  }
+  .photo__lbl {
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 12px 18px; border-radius: 999px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 10px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+  .photo__stamp {
+    position: absolute;
+    top: 30px; right: -20px;
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    text-align: center;
+    transform: rotate(-9deg);
+    border: 4px solid var(--paper);
+  }
+  .photo__stamp b {
+    font-family: 'Marcellus', serif;
+    font-style: italic;
+    font-size: 18px; line-height: 1; display: block;
+  }
+  .photo__stamp span {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px; letter-spacing: 3px;
+    color: rgba(255,255,255,.7);
+    text-transform: uppercase; font-weight: 700;
+    display: block; margin-top: 4px;
+  }
+
+  /* Offer block - prominent centered offer above CTA */
+  .offer-block {
+    margin: 18px auto 0;
+    text-align: center;
+    z-index: 5; position: relative;
+  }
+  .offer-block__amt {
+    font-family: 'Marcellus', serif;
+    font-size: 60px; line-height: 1;
+    letter-spacing: -1px;
+    color: var(--ink);
+    display: block;
+  }
+  .offer-block__amt em {
+    font-style: italic; font-weight: 400;
+    color: var(--charcoal);
+    font-size: 42px;
+    margin-left: 4px;
+  }
+  .offer-block__lbl {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+    margin-top: 8px; display: block;
+  }
+  .offer-block__rule {
+    width: 60px; height: 1px;
+    background: var(--ink); opacity: .35;
+    margin: 12px auto 12px;
+  }
+
+  /* CTA banner - the action below the offer */
+  .cta-banner {
+    margin: 0 auto;
+    display: inline-block;
+    background: var(--ink); color: var(--paper);
+    padding: 16px 38px;
+    border-radius: 999px;
+    font-family: 'Marcellus', serif;
+    font-size: 20px; letter-spacing: 3px;
+    text-transform: uppercase;
+    z-index: 5; position: relative;
+    text-align: center;
+  }
+  .cta-row {
+    text-align: center;
+    z-index: 5; position: relative;
+  }
+
+  /* Footer note */
+  .footer-meta {
+    margin-top: 16px;
+    text-align: center;
+    font-family: 'Marcellus', serif;
+    font-style: italic;
+    font-size: 16px; color: var(--charcoal);
+    z-index: 5; position: relative;
+  }
+  .footer-meta em { font-style: italic; color: var(--graphite); }
+</style>
+</head>
+<body>
+  <section class="ad">
+    <span class="arc"></span>
+    <span class="arc-2"></span>
+
+    <div class="logo">
+      <div class="logo__mark">L</div>
+      <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+    </div>
+
+    <div class="heading">
+      <p class="eyebrow">Mother's Day · 2026</p>
+      <h1>Mom deserves to feel<br/><span class="confident">confident</span> too.</h1>
+    </div>
+
+    <div class="photo">
+      <span class="photo__lbl">[ Client photo ]</span>
+      <span class="photo__stamp">
+        <div>
+          <b>From the<br/>family</b>
+          <span>'26</span>
+        </div

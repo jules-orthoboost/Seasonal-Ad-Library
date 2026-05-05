@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Spring Break 2026</title>
+<!--
+  Campaign: Spring Break 2026
+  Font: Fraunces (display) + Inter (UI)
+  Reference: Embrace Orthodontics - light card overlay on photo, dotted pattern, bullet checks
+  Boss copy (verbatim):
+    Headline: "Start without missing school"
+    Sub:      "Perfect time to begin treatment"
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,400..900,0..100;1,9..144,400..900,0..100&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #131313;
+    --charcoal: #2a2a2a;
+    --graphite: #525252;
+    --mid: #898989;
+    --line: #cfcfcf;
+    --soft: #e7e5df;
+    --paper: #f1efe9;
+    --bone: #faf8f3;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1080px;
+    overflow: hidden;
+    background: #d6d4ce;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .ad {
+    width: 1080px; height: 1080px;
+    background: var(--soft); color: var(--ink);
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+  }
+
+  /* Logo bar across top */
+  .top-bar {
+    position: absolute; top: 0; left: 0; right: 0;
+    padding: 36px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 5;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .logo__mark {
+    width: 50px; height: 50px;
+    background: var(--ink); color: var(--paper);
+    display: grid; place-items: center;
+    font-family: 'Fraunces', serif; font-weight: 800;
+    font-size: 22px; border-radius: 4px;
+  }
+  .logo__type {
+    font-family: 'Fraunces', serif;
+    font-weight: 700; font-size: 22px;
+    letter-spacing: 1px; line-height: 1;
+  }
+  .logo__type small {
+    display: block; font-family: 'Inter', sans-serif;
+    font-size: 9px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 600; margin-top: 5px;
+  }
+  .top-tag {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 18px; color: var(--charcoal);
+  }
+  .top-tag b { font-style: normal; font-weight: 700; }
+
+  /* Decorative dot pattern (right side) */
+  .dots {
+    position: absolute;
+    top: 110px; right: 60px;
+    width: 200px; height: 80px;
+    background-image: radial-gradient(circle, var(--ink) 2.5px, transparent 3px);
+    background-size: 22px 22px;
+    opacity: .35;
+    z-index: 1;
+  }
+  .dots-2 {
+    position: absolute;
+    bottom: 280px; right: 50px;
+    width: 110px; height: 110px;
+    background-image: radial-gradient(circle, var(--ink) 2.5px, transparent 3px);
+    background-size: 22px 22px;
+    opacity: .25;
+    z-index: 1;
+  }
+
+  /* Photo zone - full right side */
+  .photo {
+    position: absolute;
+    top: 0; right: 0;
+    width: 65%; height: 100%;
+    background: var(--soft);
+    background-image:
+      repeating-linear-gradient(45deg,
+        rgba(0,0,0,.04) 0,
+        rgba(0,0,0,.04) 1px,
+        transparent 1px,
+        transparent 14px);
+    display: grid; place-items: center;
+  }
+  .photo__lbl {
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 12px 20px; border-radius: 999px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+
+  /* Card overlay - left */
+  .card {
+    position: absolute;
+    top: 180px; left: 60px;
+    width: 480px;
+    background: var(--paper);
+    padding: 48px 44px 40px;
+    border-radius: 8px;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.18);
+    z-index: 4;
+  }
+  .card__eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 600; margin-bottom: 14px;
+  }
+  .card h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 700; font-size: 64px;
+    line-height: .95; letter-spacing: -1px;
+    color: var(--ink);
+  }
+  .card h1 em {
+    font-style: italic; font-weight: 500;
+    color: var(--charcoal);
+  }
+  .card__sub {
+    margin-top: 18px;
+    font-family: 'Fraunces', serif;
+    font-style: italic; font-size: 22px;
+    color: var(--graphite); line-height: 1.4;
+  }
+  .card__cta {
+    margin-top: 28px;
+    background: var(--ink); color: var(--paper);
+    padding: 18px 30px; border-radius: 8px;
+    display: block; text-align: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 700; font-size: 20px;
+    letter-spacing: .5px;
+  }
+  .card__bullets {
+    margin-top: 24px;
+    display: grid; gap: 10px;
+  }
+  .card__bullets li {
+    list-style: none;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px; color: var(--graphite);
+    font-weight: 500;
+  }
+  .card__bullets li::before {
+    content: "✓"; color: var(--ink);
+    font-weight: 700; font-size: 16px;
+  }
+
+  /* Bottom CTA badge in right side */
+  .schedule-badge {
+    position: absolute;
+    right: 60px; bottom: 60px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 18px 26px;
+    border-radius: 8px;
+    z-index: 5;
+    text-align: center;
+  }
+  .schedule-badge b {
+    font-family: 'Fraunces', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--ink); display: block; line-height: 1;
+  }
+  .schedule-badge span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700; margin-top: 6px; display: block;
+  }
+</style>
+</head>
+<body>
+  <section class="ad">
+    <div class="dots"></div>
+    <div class="dots-2"></div>
+
+    <div class="top-bar">
+      <div class="logo">
+        <div class="logo__mark">L</div>
+        <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+      </div>
+      <p class="top-tag"><b>$X,XXX off</b> · Spring Special</p>
+    </div>
+
+    <div class="photo">
+      <span class="photo__lbl">[ Client photo ]</span>
+    </div>
+
+    <div class="card">
+      <p class="card__eyebrow">Spring Break · 2026</p>
+      <h1>Start <em>without</em> missing school.</h1>
+      <p class="card__sub">Perfect time to begin treatment. One quick visit during the break.</p>
+      <a class="card__cta" href="#">Free Consultation</a>
+      <ul class="card__bullets">
+        <li>Same-week start dates open</li>
+        <li>Family pricing · No surprises</li>
+        <li>Braces <em>or</em> Invisalign</li>
+      </ul>
+    </div>
+
+    <div class="schedule-badge">
+      <b>Schedule</b>
+      <span>Break Week Visit</span>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Veterans Day 2026</title>
+<!--
+  Campaign: Veterans Day 2026
+  Font: Libre Caslon Text (display) + Libre Franklin (UI)
+  Reference: Larson Family - formal restrained layout, photo center, three pills below
+  Boss copy (verbatim):
+    Headline: "Honoring those who served"
+    Sub:      "Special offer for veterans & families"
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #131313;
+    --charcoal: #2a2a2a;
+    --graphite: #555;
+    --mid: #888;
+    --line: #c8c8c8;
+    --soft: #dfdfdf;
+    --paper: #ededec;
+    --bone: #f4f4f3;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1080px;
+    overflow: hidden;
+    background: #d2d2d0;
+    font-family: 'Libre Franklin', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .ad {
+    width: 1080px; height: 1080px;
+    background: var(--paper); color: var(--ink);
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+    padding: 60px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  /* Top banner with stars + date */
+  .top {
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px;}
+  .logo__mark {
+    width: 50px; height: 50px;
+    background: var(--ink); color: var(--paper);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 700; font-size: 22px;
+  }
+  .logo__type {
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 700; font-size: 22px;
+    letter-spacing: 2px; line-height: 1;
+    text-transform: uppercase;
+  }
+  .logo__type small {
+    display: block; font-family: 'Libre Franklin', sans-serif;
+    font-size: 9px; letter-spacing: 5px;
+    color: var(--mid); font-weight: 600; margin-top: 5px;
+  }
+  .top__date {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: 22px; color: var(--charcoal);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .top__date::before {
+    content: "★"; font-size: 18px;
+  }
+
+  /* Hero center */
+  .hero {
+    text-align: center;
+    margin-top: 30px;
+  }
+  .eyebrow {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 11px; letter-spacing: 7px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700; margin-bottom: 14px;
+  }
+  h1 {
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 400;
+    font-size: 72px; line-height: 1.05;
+    letter-spacing: -.5px;
+    color: var(--ink);
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--charcoal);
+  }
+  .rule {
+    width: 80px; height: 2px;
+    background: var(--ink); margin: 22px auto;
+  }
+  .gratitude {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: 22px; color: var(--graphite);
+    line-height: 1.5; max-width: 580px; margin: 0 auto;
+  }
+
+  /* Center stage with portrait + offer */
+  .stage {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 30px; align-items: center;
+    margin-top: 24px;
+  }
+  .portrait {
+    aspect-ratio: 1 / 1;
+    background: var(--soft);
+    background-image:
+      repeating-linear-gradient(-45deg,
+        rgba(0,0,0,.04) 0,
+        rgba(0,0,0,.04) 1px,
+        transparent 1px,
+        transparent 14px);
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    position: relative;
+  }
+  .portrait__lbl {
+    background: var(--paper); border: 1px solid var(--line);
+    padding: 10px 14px; border-radius: 999px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 9px; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+  .portrait__caption {
+    position: absolute; left: 16px; bottom: 16px;
+    background: var(--ink); color: var(--paper);
+    padding: 8px 14px; border-radius: 4px;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .offer-card {
+    border: 1px solid var(--ink);
+    padding: 32px 28px;
+  }
+  .offer-card__lbl {
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 10px; letter-spacing: 5px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+  .offer-card__amt {
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 700; font-size: 88px;
+    line-height: 1; letter-spacing: -2px;
+    margin: 8px 0;
+  }
+  .offer-card__what {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic;
+    font-size: 20px; color: var(--charcoal);
+  }
+  .offer-card__hr {
+    height: 1px; background: var(--line);
+    margin: 22px 0;
+  }
+  .offer-card__bullets {
+    display: grid; gap: 8px;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 13px; color: var(--graphite);
+  }
+  .offer-card__bullets li {
+    list-style: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .offer-card__bullets li::before {
+    content: "★"; color: var(--ink); font-size: 12px;
+  }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding-top: 22px;
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    align-items: center; gap: 20px;
+  }
+  .footer .thanks {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic; font-size: 18px;
+    color: var(--charcoal);
+  }
+  .cta {
+    background: var(--ink); color: var(--paper);
+    padding: 16px 28px; border-radius: 4px;
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 700; font-size: 16px;
+    letter-spacing: 2px; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .footer .meta {
+    text-align: right;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--mid); font-weight: 600;
+  }
+  .footer .meta b {
+    font-family: 'Libre Caslon Text', serif;
+    font-style: italic; font-size: 16px;
+    color: var(--ink); text-transform: none;
+    letter-spacing: 0; font-weight: 400;
+  }
+</style>
+</head>
+<body>
+  <section class="ad">
+    <div class="top">
+      <div class="logo">
+        <div class="logo__mark">L</div>
+        <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+      </div>
+      <span class="top__date">Veterans Day · 11 . 11 . 2026</span>
+    </div>
+
+    <div class="hero">
+      <p class="eyebrow">Service · Gratitude · Community</p>
+      <h1>Honoring those<br/><em>who served.</em></h1>
+      <div class="rule"></div>
+      <p class="gratitude">A small thank you for a great service. Special offer for veterans &amp; families. Gratitude with real access.</p>
+    </div>
+
+    <div class="stage">
+      <div class="portrait">
+        <span class="portrait__lbl">[ Veteran Photo ]</span>
+      </div>
+      <div class="offer-card">
+        <p class="offer-card__lbl">Veteran &amp; Family Offer · Priority Access</p>
+        <p class="offer-card__amt">$X,XXX</p>
+        <p class="offer-card__what"><em>Off Full Treatment</em></p>
+        <div class="offer-card__hr"></div>
+        <ul class="offer-card__bullets">
+          <li>Active duty &amp; retired veterans</li>
+          <li>Priority booking · Reserved holiday hours</li>
+          <li>Immediate family included</li>
+          <li>Braces or Invisalign</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p class="thanks">"Thank you for your service."</p>
+      <a class="cta" href="#">Claim Veteran Offer →</a>
+      <p class="meta">1,200+ Smiles · Family Friendly</p>
+    </div>
+  </section>
+</body>
+</htm                               

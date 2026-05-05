@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Federal Holidays 2026</title>
+<!--
+  Campaign: Federal Holidays (MLK Day / Presidents Day) 2026
+  Font: Roboto Slab (display) + Inter (UI)
+  Reference: Embrace style - light card, bullet checks; calendar treatment as hero
+  Boss copy (verbatim):
+    Headline: "Use your long weekend wisely"
+    Sub:      "Start in just one visit"
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #131313;
+    --charcoal: #2c2c2c;
+    --graphite: #555;
+    --mid: #898989;
+    --line: #c8c8c8;
+    --soft: #dedede;
+    --paper: #ededed;
+    --bone: #f4f4f4;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 1080px; height: 1080px;
+    overflow: hidden;
+    background: #cfcfcf;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex; justify-content: center; align-items: center;
+  }
+  .ad {
+    width: 1080px; height: 1080px;
+    background: var(--paper); color: var(--ink);
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: 56px 60px;
+  }
+
+  /* Top bar - logo + holiday tag */
+  .top {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .logo { display: flex; align-items: center; gap: 12px;}
+  .logo__mark {
+    width: 56px; height: 56px;
+    background: var(--ink); color: var(--paper);
+    border-radius: 8px;
+    display: grid; place-items: center;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800; font-size: 26px;
+  }
+  .logo__type {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700; font-size: 22px;
+    letter-spacing: 1px; line-height: 1;
+    text-transform: uppercase;
+  }
+  .logo__type small {
+    display: block; font-family: 'Inter', sans-serif;
+    font-size: 9px; letter-spacing: 5px;
+    color: var(--mid); font-weight: 600; margin-top: 5px;
+  }
+  .holiday-tag {
+    border: 1.5px solid var(--ink);
+    padding: 10px 18px; border-radius: 8px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .holiday-tag b {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700; font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .holiday-tag span {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 600;
+  }
+
+  /* Hero block - split */
+  .hero {
+    display: grid; grid-template-columns: 1.05fr 1fr;
+    gap: 50px; align-items: center;
+  }
+  .hero__text { padding-top: 30px;}
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; letter-spacing: 6px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700; margin-bottom: 14px;
+  }
+  h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800; font-size: 92px;
+    line-height: .95; letter-spacing: -2px;
+  }
+  h1 em {
+    font-style: italic; font-weight: 400;
+    color: var(--charcoal);
+  }
+  .sub {
+    margin-top: 22px;
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+    font-size: 26px; color: var(--charcoal);
+    line-height: 1.4;
+  }
+  .points {
+    margin-top: 28px;
+    display: grid; gap: 10px;
+  }
+  .points li {
+    list-style: none;
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px; color: var(--graphite);
+    font-weight: 500;
+  }
+  .points li::before {
+    content: ""; width: 18px; height: 18px;
+    border-radius: 50%; background: var(--ink);
+    display: inline-block; flex-shrink: 0;
+    background-image:
+      linear-gradient(45deg, transparent 45%, var(--paper) 45%, var(--paper) 55%, transparent 55%),
+      linear-gradient(-45deg, transparent 45%, var(--paper) 45%, var(--paper) 55%, transparent 55%);
+  }
+
+  /* Calendar treatment - three giant days */
+  .cal {
+    display: grid; gap: 12px;
+  }
+  .cal__head {
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+    font-size: 20px; color: var(--charcoal);
+    text-align: center;
+  }
+  .cal__row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .day {
+    aspect-ratio: 1 / 1.15;
+    border: 1.5px solid var(--ink);
+    border-radius: 8px;
+    padding: 18px;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    background: var(--paper);
+    position: relative;
+  }
+  .day--ink {
+    background: var(--ink); color: var(--paper);
+  }
+  .day--ink .day__lbl { color: rgba(255,255,255,.55);}
+  .day--visit {
+    background: var(--paper); color: var(--ink);
+    border-width: 3px;
+  }
+  .day__lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+  .day__num {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 800;
+    font-size: 84px; line-height: 1;
+    letter-spacing: -2px;
+  }
+  .day__bot {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--mid);
+    font-weight: 700;
+  }
+  .day--ink .day__bot { color: rgba(255,255,255,.65);}
+  .day--visit .day__bot {
+    color: var(--ink); font-weight: 800;
+  }
+  .day__visit-pin {
+    position: absolute; top: -10px; right: -10px;
+    background: var(--ink); color: var(--paper);
+    padding: 5px 10px; border-radius: 4px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700; font-size: 11px;
+    letter-spacing: .5px;
+    transform: rotate(6deg);
+  }
+
+  /* Bottom CTA bar */
+  .bottom {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 24px; align-items: center;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .bottom__txt {
+    font-family: 'Roboto Slab', serif;
+    font-style: italic;
+    font-size: 17px; color: var(--charcoal);
+  }
+  .bottom__txt b {
+    font-style: normal; font-weight: 700;
+    color: var(--ink); display: block;
+    font-size: 22px; margin-bottom: 4px;
+  }
+  .cta {
+    background: var(--ink); color: var(--paper);
+    padding: 18px 30px; border-radius: 8px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700; font-size: 17px;
+    letter-spacing: 1px;
+    display: inline-flex; align-items: center; gap: 12px;
+  }
+</style>
+</head>
+<body>
+  <section class="ad">
+    <div class="top">
+      <div class="logo">
+        <div class="logo__mark">L</div>
+        <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+      </div>
+      <div class="holiday-tag">
+        <b>3-Day Weekend</b>
+        <span>· MLK Day · Presidents Day</span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">Federal Holiday · 2026</p>
+        <h1>Use your long<br/>weekend <em>wisely.</em></h1>
+        <p class="sub">Start in just one visit. Limited holiday availability. Walk out with a plan in motion.</p>
+        <ul class="points">
+          <li>One visit to begin treatment</li>
+          <li>No PTO needed · Federal holiday</li>
+          <li>Save $X,XXX on full treatment</li>
+        </ul>
+      </div>
+
+      <div class="cal">
+        <p class="cal__head">Your three days off</p>
+        <div class="cal__row">
+          <div class="day day--ink">
+            <span class="day__lbl">Sat</span>
+            <span class="day__num">14</span>
+            <span class="day__bot">Day off</span>
+          </div>
+          <div class="day day--visit">
+            <span class="day__lbl">Sun</span>
+            <span class="day__num">15</span>
+            <span class="day__bot">★ Visit fits</span>
+            <span class="day__visit-pin">1 visit</span>
+          </div>
+          <div class="day day--ink">
+            <span class="day__lbl">Mon · Federal</span>
+            <span class="day__num">16</span>
+            <span class="day__bot">Holiday</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="bottom__txt">
+        <b>Walk out with a plan.</b>
+        Limited holiday availability · Book in 2 minutes
+      </div>
+      <a class="cta" href="#">Book Holiday Visit →</a>
+    </div>
+  </section>
+</body>
+</html>

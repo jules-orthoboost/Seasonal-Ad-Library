@@ -1,0 +1,262 @@
+/* =============================================================
+   OrthoBoost · Colors + Type tokens
+   Source: Orthoboost_Brand-Guidelines.pdf + startorthoboost.com
+   ============================================================= */
+
+/* ---------- Webfont: Segoe UI fallback via Open Sans ----------
+   Segoe UI ships with Windows and is not freely redistributable.
+   Open Sans is the closest open-source match (humanist sans, similar
+   x-height + open apertures). Substitution flagged in README.        */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+:root {
+  /* ---- Brand colors (PDF §3.1) ------------------------------- */
+  --ob-sapphire:      #122F51;   /* "Sapphire Bracket" - primary */
+  --ob-blue:          #29BBF6;   /* "Boost Blue"      - accent  */
+  --ob-mint:          #7AEFDF;   /* "Fresh Mint"      - accent  */
+
+  /* ---- Sapphire scale (derived from PDF tint ramp) ----------- */
+  --ob-sapphire-900:  #0A1F3A;
+  --ob-sapphire-800:  #122F51;   /* canonical */
+  --ob-sapphire-700:  #1E4674;
+  --ob-sapphire-600:  #2E5E92;
+  --ob-sapphire-500:  #4D7BAE;
+  --ob-sapphire-400:  #7DA0C4;
+  --ob-sapphire-300:  #ADC4DA;
+  --ob-sapphire-200:  #D6E2EE;
+  --ob-sapphire-100:  #EDF2F8;
+  --ob-sapphire-50:   #F6F9FC;
+
+  /* ---- Boost Blue scale -------------------------------------- */
+  --ob-blue-700:      #0C7AA8;
+  --ob-blue-600:      #1497D2;
+  --ob-blue-500:      #29BBF6;   /* canonical */
+  --ob-blue-400:      #5FCEF9;
+  --ob-blue-300:      #95DFFB;
+  --ob-blue-200:      #C2EBFC;
+  --ob-blue-100:      #E2F5FE;
+
+  /* ---- Fresh Mint scale -------------------------------------- */
+  --ob-mint-700:      #2FB39E;
+  --ob-mint-600:      #4FCBB8;
+  --ob-mint-500:      #7AEFDF;   /* canonical */
+  --ob-mint-400:      #9DF3E7;
+  --ob-mint-300:      #BDF7EE;
+  --ob-mint-200:      #DCFBF6;
+  --ob-mint-100:      #EDFDFB;
+
+  /* ---- Neutrals ---------------------------------------------- */
+  --ob-white:         #FFFFFF;
+  --ob-paper:         #F8F9FB;
+  --ob-line:          #E4E8EE;
+  --ob-line-strong:   #C9D1DC;
+  --ob-ink:           #122F51;   /* same as Sapphire */
+  --ob-ink-soft:      #3F4F66;
+  --ob-muted:         #6B7888;
+  --ob-muted-soft:    #97A0AE;
+  --ob-black:         #0A1828;
+
+  /* ---- Semantic foreground / background --------------------- */
+  --fg-1:             var(--ob-ink);          /* primary text   */
+  --fg-2:             var(--ob-ink-soft);     /* secondary text */
+  --fg-3:             var(--ob-muted);        /* tertiary text  */
+  --fg-disabled:      var(--ob-muted-soft);
+  --fg-on-dark:       var(--ob-white);
+  --fg-on-accent:     var(--ob-sapphire);
+
+  --bg-page:          var(--ob-white);
+  --bg-paper:         var(--ob-paper);
+  --bg-card:          var(--ob-white);
+  --bg-dark:          var(--ob-sapphire);
+  --bg-darker:        var(--ob-sapphire-900);
+  --bg-tint-blue:     var(--ob-blue-100);
+  --bg-tint-mint:     var(--ob-mint-100);
+
+  --border:           var(--ob-line);
+  --border-strong:    var(--ob-line-strong);
+
+  /* ---- Semantic state --------------------------------------- */
+  --accent:           var(--ob-blue);
+  --accent-hover:     var(--ob-blue-600);
+  --accent-press:     var(--ob-blue-700);
+  --success:          var(--ob-mint-700);
+  --info:             var(--ob-blue-500);
+  --warn:             #E8A23A;
+  --danger:           #D9534F;
+
+  /* ---- Type scale ------------------------------------------- */
+  --font-sans:        'Segoe UI', 'Open Sans', system-ui, -apple-system,
+                      'Helvetica Neue', Arial, sans-serif;
+  --font-display:     'Segoe UI', 'Open Sans', system-ui, sans-serif;
+
+  --fw-light:         300;
+  --fw-regular:       400;
+  --fw-semibold:      600;
+  --fw-bold:          700;
+  --fw-black:         800;
+
+  /* fluid display sizes (PDF uses very large light numerals for section dividers) */
+  --fs-mega:          clamp(96px, 14vw, 220px);
+  --fs-display:       clamp(48px, 6vw, 84px);
+  --fs-h1:            clamp(36px, 4.4vw, 56px);
+  --fs-h2:            clamp(28px, 3.2vw, 40px);
+  --fs-h3:            22px;
+  --fs-h4:            18px;
+  --fs-body:          16px;
+  --fs-body-sm:       14px;
+  --fs-caption:       12px;
+  --fs-eyebrow:       11px;
+
+  --lh-tight:         1.05;
+  --lh-snug:          1.2;
+  --lh-normal:        1.5;
+  --lh-relaxed:       1.65;
+
+  --tracking-tight:   -0.02em;
+  --tracking-snug:    -0.01em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.04em;
+  --tracking-eyebrow: 0.18em;
+
+  /* ---- Radii ------------------------------------------------ */
+  --r-xs:             4px;
+  --r-sm:             6px;
+  --r-md:             10px;
+  --r-lg:             14px;
+  --r-xl:             20px;
+  --r-2xl:            28px;
+  --r-pill:           999px;
+
+  /* ---- Spacing scale (4px base) ----------------------------- */
+  --s-1:              4px;
+  --s-2:              8px;
+  --s-3:              12px;
+  --s-4:              16px;
+  --s-5:              20px;
+  --s-6:              24px;
+  --s-8:              32px;
+  --s-10:             40px;
+  --s-12:             48px;
+  --s-16:             64px;
+  --s-20:             80px;
+  --s-24:             96px;
+
+  /* ---- Shadows (subtle - brand is clean, not heavy) --------- */
+  --shadow-xs:        0 1px 2px rgba(18, 47, 81, 0.06);
+  --shadow-sm:        0 2px 6px rgba(18, 47, 81, 0.07),
+                      0 1px 2px rgba(18, 47, 81, 0.04);
+  --shadow-md:        0 8px 22px rgba(18, 47, 81, 0.10),
+                      0 2px 6px rgba(18, 47, 81, 0.05);
+  --shadow-lg:        0 24px 50px rgba(18, 47, 81, 0.16),
+                      0 6px 14px rgba(18, 47, 81, 0.07);
+  --shadow-glow-blue: 0 8px 24px rgba(41, 187, 246, 0.35);
+
+  /* ---- Motion ----------------------------------------------- */
+  --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:      cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:         140ms;
+  --dur-base:         220ms;
+  --dur-slow:         420ms;
+}
+
+/* =============================================================
+   Semantic typography classes
+   ============================================================= */
+.ob-mega {
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-mega);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+}
+.ob-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+.ob-h1 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-snug);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+.ob-h2 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+.ob-h3 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+.ob-h4 {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+}
+.ob-body {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+.ob-body-sm {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+.ob-caption {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-normal);
+  color: var(--fg-3);
+}
+.ob-eyebrow {
+  font-family: var(--font-sans);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-eyebrow);
+  line-height: 1;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.ob-section-number {
+  /* The huge "01" / "02" numerals on dark dividers in the PDF */
+  font-family: var(--font-display);
+  font-weight: var(--fw-light);
+  font-size: var(--fs-mega);
+  line-height: 0.85;
+  letter-spacing: var(--tracking-tight);
+  color: var(--ob-white);
+}
+
+/* Base reset opt-in - use selectively */
+.ob-base {
+  font-family: var(--font-sans);
+  color: var(--fg-1);
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}

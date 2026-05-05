@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OrthoBoost Seasonal Ad Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #64748b; line-height: 1.6; }
+
+  /* NAV - shared internal-tools nav, matches Brand Personas page */
+  .navbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .navbar-logo {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #163055;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .navbar-logo span { color: #29bbf6; }
+  .navbar-links {
+    display: flex;
+    gap: 1.75rem;
+    margin-left: auto;
+  }
+  .navbar-links a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+    text-decoration: none;
+    transition: color 0.15s;
+    padding: 0.4rem 0;
+    position: relative;
+  }
+  .navbar-links a:hover { color: #163055; }
+  .navbar-links a.active {
+    color: #29bbf6;
+  }
+  .navbar-links a.active::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -19px;
+    height: 2px;
+    background: #29bbf6;
+  }
+
+  /* HERO - matches Brand Personas page exactly */
+  .hero {
+    background: #163055;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .hero-title span { color: #29bbf6; }
+  .hero-subtitle {
+    font-size: 1.075rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 540px;
+    margin: 0 auto;
+    font-weight: 400;
+  }
+
+  /* SEARCH - matches Brand Personas page */
+  .search-bar-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 2rem 0;
+  }
+  .search-input {
+    width: 100%;
+    max-width: 420px;
+    padding: 0.7rem 1rem 0.7rem 2.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #1a202c;
+    background: #ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'/%3E%3C/svg%3E") no-repeat 0.85rem center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .search-input:focus {
+    border-color: #29bbf6;
+    box-shadow: 0 0 0 3px rgba(41,187,246,0.12);
+  }
+  .search-input::placeholder { color: #94a3b8; }
+  .search-count {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-top: 0.6rem;
+  }
+
+  /* GRID - matches Brand Personas page */
+  .grid-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem 4rem;
+  }
+  .ad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* AD CARDS - same shape as persona cards, with iframe preview at top */
+  .ad-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .ad-card:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .card-accent-bar { height: 4px; width: 100%; }
+  .ad-preview {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    overflow: hidden;
+    position: relative;
+  }
+  .ad-preview iframe {
+    width: 1080px;
+    height: 1080px;
+    border: 0;
+    transform-origin: 0 0;
+    transform: scale(var(--ob-scale, 0.34));
+    pointer-events: none;
+    display: block;
+  }
+  .card-body {
+    padding: 1.375rem 1.375rem 1rem;
+    flex: 1;
+  }
+  .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a202c;
+    line-height: 1.3;
+  }
+  .card-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+  .card-subtitle {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+  }
+  .card-snippet {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.55;
+  }
+  .ad-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.65rem;
+  }
+  .ad-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: #e2f5fe;
+    color: #0c7aa8;
+  }
+  .ad-tag--neutral {
+    background: #f1f5f9;
+    color: #64748b;
+  }
+  .card-footer {
+    padding: 0.875rem 1.375rem 1.25rem;
+    border-top: 1px solid #f1f5f9;
+    margin-top: auto;
+  }
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.45rem 0.9rem;
+    border-radius: 6px;
+    color: #163055;
+    background: #29bbf6;
+    transition: opacity 0.15s;
+  }
+  .card-link:hover { opacity: 0.88; }
+
+  /* NO RESULTS - matches Brand Personas page */
+  .no-results {
+    display: none;
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+  .no-results.visible { display: block; }
+
+  /* FOOTER - matches Brand Personas page */
+  .page-footer {
+    text-align: center;
+    padding: 1.5rem 2rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    border-top: 1px solid #e2e8f0;
+    background: #ffffff;
+  }
+
+  @media (max-width: 900px) { .ad-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) {
+    .ad-grid { grid-template-columns: 1fr; }
+    .navbar-links { gap: 1rem; }
+    .navbar-links a { font-size: 0.75rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="https://jules-orthoboost.github.io/Brand-Personas/index.html" class="navbar-logo">Ortho<span>Boost</span></a>
+  <div class="navbar-links">
+    <a href="https://jules-orthoboost.github.io/Brand-Personas/index.html">Brand Personas</a>
+    <a href="index.html" class="active">Seasonal Library</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1 class="hero-title">OrthoBoost <span>Seasonal Ad</span> Library</h1>
+  <p class="hero-subtitle">12 greyscale ad templates - one per campaign moment, ready to skin for any client.</p>
+</section>
+
+<div class="search-bar-wrap">
+  <input type="text" class="search-input" id="searchInput" placeholder="Search templates by campaign or font..." autocomplete="off">
+  <div class="search-count" id="searchCount">Showing all 12 templates</div>
+</div>
+
+<div class="grid-wrap">
+  <div class="ad-grid" id="adGrid">
+
+    <div class="ad-card" data-name="new year's reset self improvement confidence transformation easy start low commitment">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="new-years-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">New Year's 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Easy start · Low commitment</div>
+        <div class="card-snippet">"New Year, New Smile." Split layout with smile photo and oval consult button.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Reset / Self-Improvement</span>
+          <span class="ad-tag ad-tag--neutral">Confidence transformation</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="new-years-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="spring break convenience timing no disruption routine quick easy start during break">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="spring-break-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Spring Break 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Quick start during the break</div>
+        <div class="card-snippet">"Start without missing school." White card overlay on photo, dotted pattern.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Convenience / Timing</span>
+          <span class="ad-tag ad-tag--neutral">No disruption to routine</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="spring-break-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="end of school proactive beat the rush early scheduling advantage">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="end-of-school-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">End of School 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Early scheduling advantage</div>
+        <div class="card-snippet">"Start before summer fills up." Bold split with four-icon feature row and dark CTA.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Be Proactive</span>
+          <span class="ad-tag ad-tag--neutral">Beat the rush</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="end-of-school-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="summer time availability easiest start flexible appointments">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="summer-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Summer 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Flexible appointments</div>
+        <div class="card-snippet">"Summer is the easiest time to begin." Center photo with Free Consultation pill and schedule button.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Time Availability</span>
+          <span class="ad-tag ad-tag--neutral">Easiest time to start</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="summer-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="back to school preparedness confidence fresh start adjust into routine">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="back-to-school-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Back to School 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Start now · Adjust into routine</div>
+        <div class="card-snippet">"Start the school year with confidence." Three feature pills overlapping the photo edge.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Preparedness / Confidence</span>
+          <span class="ad-tag ad-tag--neutral">Confidence + fresh start</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="back-to-school-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="fall low competition window calm before holiday chaos easier scheduling">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="fall-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Fall 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Easier scheduling now</div>
+        <div class="card-snippet">"Best time to start before the holidays." Three stacked circular portraits and a warm offer panel.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Low Competition Window</span>
+          <span class="ad-tag ad-tag--neutral">Calm before holiday chaos</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="fall-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="black friday value smart spending invest vs waste limited time incentive">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="black-friday-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Black Friday 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Limited-time incentive</div>
+        <div class="card-snippet">"Don't buy junk. Invest in confidence." Inverted dark canvas, stars top, big offer card.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Value / Smart Spending</span>
+          <span class="ad-tag ad-tag--neutral">Invest vs. waste</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="black-friday-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="holiday gifting meaningful spend long term value giftable consultation savings">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="holiday-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Holiday 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Giftable consults & savings</div>
+        <div class="card-snippet">"Give a gift that lasts a lifetime." Tilted offer banner, hanging ornaments, symmetric photos.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Gifting / Meaningful Spend</span>
+          <span class="ad-tag ad-tag--neutral">Long-term value</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="holiday-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="federal holidays extra time opportunity long weekend use extra day productively">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="federal-holidays-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Federal Holidays 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Limited holiday availability</div>
+        <div class="card-snippet">"Use your long weekend wisely." Three-day calendar with the visit pinned mid-weekend.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Extra Time / Opportunity</span>
+          <span class="ad-tag ad-tag--neutral">Use the extra day productively</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="federal-holidays-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="veterans day appreciation community gratitude special access veteran specific incentive">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="veterans-day-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Veterans Day 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Veteran-specific incentive</div>
+        <div class="card-snippet">"Honoring those who served." Restraint as respect - formal layout with real veteran portrait zone.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Appreciation / Community</span>
+          <span class="ad-tag ad-tag--neutral">Gratitude + special access</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="veterans-day-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="mothers day self care appreciation confidence for moms giftable emotional">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="mothers-day-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">Mother's Day 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Giftable + emotional</div>
+        <div class="card-snippet">"Mom deserves to feel confident too." Soft arcs, rounded portrait, prominent centered offer.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Self-Care / Appreciation</span>
+          <span class="ad-tag ad-tag--neutral">Confidence for moms</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="mothers-day-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ad-card" data-name="march madness fun competition gamification engagement bracket giveaway promo">
+      <div class="card-accent-bar" style="background:#29bbf6;"></div>
+      <div class="ad-preview"><iframe src="march-madness-2026.html" loading="lazy"></iframe></div>
+      <div class="card-body">
+        <div class="card-header">
+          <div class="card-name">March Madness 2026</div>
+          <div class="card-dot" style="background:#29bbf6;"></div>
+        </div>
+        <div class="card-subtitle">Offer: Bracket promo · Giveaway</div>
+        <div class="card-snippet">"Winning smile starts here." Top scoreboard bar, real bracket structure, "Bracket Bonus" offer.</div>
+        <div class="ad-tags">
+          <span class="ad-tag">Fun / Competition</span>
+          <span class="ad-tag ad-tag--neutral">Gamification / engagement</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <a href="march-madness-2026.html" class="card-link" target="_blank" rel="noopener">
+          Open Ad
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <div class="no-results" id="noResults">No templates match your search.</div>
+</div>
+
+<footer class="page-footer">
+  OrthoBoost Seasonal Ad Library - 12 Templates
+</footer>
+
+<script>
+  const input = document.getElementById('searchInput');
+  const cards = document.querySelectorAll('.ad-card');
+  const countEl = document.getElementById('searchCount');
+  const noResults = document.getElementById('noResults');
+
+  input.addEventListener('input', function() {
+    const query = this.value.trim().toLowerCase();
+    let visible = 0;
+    cards.forEach(function(card) {
+      const text = card.getAttribute('data-name');
+      const match = !query || text.includes(query);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    countEl.textContent = query
+      ? 'Showing ' + visible + ' of 12 templates'
+      : 'Showing all 12 templates';
+    noResults.classList.toggle('visible', visible === 0);
+  });
+
+  // Scale each ad iframe to fit its preview box exactly
+  (function() {
+    const previews = document.querySelectorAll('.ad-preview');
+    function fit() {
+      previews.forEach(function(p) {
+        const w = p.clientWidth;
+        if (w > 0) p.style.setProperty('--ob-scale', (w / 1080).toFixed(4));
+      });
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    window.addEventListener('load', fit);
+  })();
+</script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

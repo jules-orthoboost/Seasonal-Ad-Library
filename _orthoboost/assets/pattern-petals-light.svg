@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  
+  <defs>
+    <g id="pet">
+      
+      <rect x="-18" y="-18" width="36" height="36" rx="10" ry="10"></rect>
+    </g>
+  </defs>
+  <g fill="#29BBF6" opacity="1">
+    <use href="#pet" transform="translate(25 25) rotate(15)"></use>
+    <use href="#pet" transform="translate(125 25) rotate(-25)"></use>
+    <use href="#pet" transform="translate(75 95) rotate(35)"></use>
+    <use href="#pet" transform="translate(175 95) rotate(-10)"></use>
+    <use href="#pet" transform="translate(25 165) rotate(20)"></use>
+    <use href="#pet" transform="translate(125 165) rotate(-30)"></use>
+  </g>
+  <g fill="#7AEFDF">
+    <use href="#pet" transform="translate(75 25) rotate(-30)"></use>
+    <use href="#pet" transform="translate(175 25) rotate(20)"></use>
+    <use href="#pet" transform="translate(25 95) rotate(-15)"></use>
+    <use href="#pet" transform="translate(125 95) rotate(40)"></use>
+    <use href="#pet" transform="translate(75 165) rotate(-20)"></use>
+    <use href="#pet" transform="translate(175 165) rotate(15)"></use>
+  </g>
+</svg>
