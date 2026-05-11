@@ -189,6 +189,19 @@
     text-transform: none;
   }
   .reserve .dots { color: var(--mid); letter-spacing: 4px;}
+
+  /* Photo image placement (over the placeholder backgrounds) */
+  .photo__img, .portrait__img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { border-radius: 50%; }
+  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
 </style>
 </head>
 <body>
@@ -206,8 +219,8 @@
     </div>
 
     <div class="photo-wrap">
-      <div class="photo">
-        <span class="photo__lbl">[ Client photo ]</span>
+      <div class="photo"><img class="photo__img" src="photos/BTS-01.jpg" alt="Photo BTS-01" loading="lazy" style="object-position: 32% 25%;" />
+        <span class="photo__lbl">[ Photo &middot; BTS-01 ]</span>
       </div>
       <div class="pills">
         <div class="pill">
