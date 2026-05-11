@@ -222,6 +222,19 @@
     color: var(--ink); text-transform: none;
     letter-spacing: 0; font-weight: 400;
   }
+
+  /* Photo image placement (over the placeholder backgrounds) */
+  .photo__img, .portrait__img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { border-radius: 50%; }
+  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
 </style>
 </head>
 <body>
@@ -243,7 +256,7 @@
 
     <div class="stage">
       <div class="portrait">
-        <span class="portrait__lbl">[ Veteran Photo ]</span>
+        <img class="portrait__img" src="photos/VD-01.jpg" alt="Photo VD-01" loading="lazy" /><span class="portrait__lbl">[ Photo &middot; VD-01 ]</span>
       </div>
       <div class="offer-card">
         <p class="offer-card__lbl">Veteran &amp; Family Offer · Priority Access</p>
@@ -266,4 +279,4 @@
     </div>
   </section>
 </body>
-</htm                               
+</html>
