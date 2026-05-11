@@ -223,6 +223,19 @@
     z-index: 5; position: relative;
   }
   .footer-meta em { font-style: italic; color: var(--graphite); }
+
+  /* Photo image placement (over the placeholder backgrounds) */
+  .photo__img, .portrait__img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { border-radius: 50%; }
+  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
 </style>
 </head>
 <body>
@@ -240,10 +253,27 @@
       <h1>Mom deserves to feel<br/><span class="confident">confident</span> too.</h1>
     </div>
 
-    <div class="photo">
-      <span class="photo__lbl">[ Client photo ]</span>
+    <div class="photo"><img class="photo__img" src="photos/MD-01.jpg" alt="Photo MD-01" loading="lazy" />
+      <span class="photo__lbl">[ Photo &middot; MD-01 ]</span>
       <span class="photo__stamp">
         <div>
           <b>From the<br/>family</b>
           <span>'26</span>
-        </div
+        </div>
+      </span>
+    </div>
+
+    <div class="offer-block">
+      <span class="offer-block__amt">$X,XXX <em>off</em></span>
+      <span class="offer-block__lbl">Giftable · Mother's Day Special</span>
+      <div class="offer-block__rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="cta-row">
+      <a class="cta-banner" href="#">Give Her a Reason to Smile</a>
+    </div>
+
+    <p class="footer-meta">Braces <em>or</em> Invisalign</p>
+  </section>
+</body>
+</html>
