@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Mother's Day 2026</title>
+<title>Linden Family · Mother's Day 2026</title>
 <!--
   Campaign: Mother's Day 2026
   Font: Marcellus (display) + Manrope (UI)
@@ -15,21 +15,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
 <style>
+  /* ============================================================
+     LINDEN FAMILY ORTHODONTICS - BRANDED DEMO (Terracotta + Sage)
+     Fake brand applied to seasonal template. See BRAND-KIT.md.
+     ============================================================ */
   :root {
-    --ink: #131313;
-    --charcoal: #2c2c2c;
-    --graphite: #555;
-    --mid: #898989;
-    --line: #c8c8c8;
-    --soft: #e3e1da;
-    --paper: #ece9e2;
-    --bone: #f4f1ea;
+    --ink: #412234;
+    --charcoal: #6F666B;
+    --graphite: #6F666B;
+    --mid: #6F666B;
+    --line: #FFFFFF;
+    --soft: #FFFFFF;
+    --paper: #FFFFFF;
+    --bone: #FFFFFF;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     width: 1080px; height: 1080px;
     overflow: hidden;
-    background: #d3d1cc;
+    background: #FFFFFF;
     font-family: 'Manrope', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
@@ -40,19 +44,20 @@
     width: 1080px; height: 1080px;
     background: var(--paper); color: var(--ink);
     position: relative; overflow: hidden;
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+    box-shadow: 0 30px 80px -20px rgba(111,102,107,.25);
     padding: 50px 56px 50px;
     display: grid;
     grid-template-rows: auto auto auto auto auto auto;
   }
 
-  /* abstract floral arc - left top */
+  /* abstract floral arc - left top - grey accent rings */
   .arc {
     position: absolute;
     top: -180px; left: -180px;
     width: 500px; height: 500px;
     border-radius: 50%;
-    border: 60px solid var(--soft);
+    border: 60px solid #6F666B;
+    opacity: 0.35;
     pointer-events: none;
   }
   .arc-2 {
@@ -60,7 +65,8 @@
     bottom: -200px; right: -200px;
     width: 460px; height: 460px;
     border-radius: 50%;
-    border: 30px solid var(--soft);
+    border: 30px solid #6F666B;
+    opacity: 0.25;
     pointer-events: none;
   }
 
@@ -122,8 +128,8 @@
     background: var(--soft);
     background-image:
       repeating-linear-gradient(-45deg,
-        rgba(0,0,0,.04) 0,
-        rgba(0,0,0,.04) 1px,
+        rgba(111,102,107,.04) 0,
+        rgba(111,102,107,.04) 1px,
         transparent 1px,
         transparent 14px);
     border: 1px solid var(--line);
@@ -224,7 +230,67 @@
   }
   .footer-meta em { font-style: italic; color: var(--graphite); }
 
-  /* Photo image placement (over the placeholder backgrounds) */
+    /* ============================================================
+     LINDEN FAMILY ORTHODONTICS - BRAND INTEGRATION OVERRIDES
+     Charcoal Blue + Golden Pollen + Tea Green + Midnight Violet
+     ============================================================ */
+  :root {
+    --terra: #FFC857;
+    --terra-deep: #412234;
+    --sage: rgba(111,102,107,0.10);
+    --sage-deep: #6F666B;
+    --sage-dark: #6F666B;
+    --ivory: #FFFFFF;
+    --linden-line: #6F666B;
+    --ink-violet: #412234;
+  }
+  /* Logo mark - charcoal blue circle with golden leaf */
+  .logo__mark {
+    background: #6F666B !important;
+    color: #FFFFFF !important;
+    border-color: #6F666B !important;
+    overflow: hidden;
+    padding: 0;
+  }
+  .logo__mark .brand-logo-mark {
+    width: 100%; height: 100%; display: block;
+  }
+
+  /* CTAs and accent surfaces - golden pollen */
+  .cta, .card__cta, .schedule-btn, .schedule, .consult-pill, .book-cta,
+  .free-pill, .cta-banner, .offer-pill, .offer-bar__btn, .schedule-badge {
+    background: #FFC857 !important;
+    color: #6F666B !important;
+    border-color: #FFC857 !important;
+  }
+  .cta:hover, .card__cta:hover { background: #412234 !important; }
+
+  /* Inverted/dark ads (Black Friday) - midnight violet for max drama */
+  .ad--ink { background: #412234 !important; }
+  .score-bar, .footer-cta__bar { background: #6F666B !important; }
+
+  /* Offer stamps - golden pollen accent */
+  .stamp, .offer-stamp, .ny-stamp {
+    background: #FFC857 !important;
+    color: #6F666B !important;
+    border-color: #FFC857 !important;
+  }
+  .stamp b, .stamp .num, .stamp span { color: #6F666B !important; }
+
+  /* Star ratings, special accents */
+  .proof__stars { color: #FFC857 !important; }
+
+  /* Photo placeholder backgrounds - tea green */
+  .photo, .portrait, .ad-preview {
+    background-color: rgba(111,102,107,0.10) !important;
+  }
+  .photo__lbl, .portrait__lbl {
+    background: #FFFFFF !important;
+    border-color: #6F666B !important;
+    color: #6F666B !important;
+  }
+
+  /* AI image placement */
   .photo__img, .portrait__img {
     position: absolute;
     inset: 0;
@@ -233,9 +299,51 @@
     display: block;
     z-index: 1;
   }
-  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { position: relative; overflow: hidden; } .photo { overflow: hidden; }
   .portrait { border-radius: 50%; }
-  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
+
+  /* Container labels overlaid on top of images */
+  .photo .photo__lbl, .portrait .portrait__lbl, .ad-preview .photo__lbl {
+    z-index: 0;
+  }
+
+  /* Header / sectional ink fills - midnight violet */
+  .holiday-tag, .reserve { border-color: #412234 !important; }
+
+
+  /* === Uniform brand wordmark (Lora) across all ads === */
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@600;700&display=swap');
+  .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  .logo__mark {
+    width: 56px !important;
+    height: 56px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+  }
+  .logo__type {
+    font-family: 'Lora', Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: none !important;
+    font-style: normal !important;
+  }
+  .logo__type small {
+    display: block !important;
+    font-family: 'Inter', system-ui, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 9px !important;
+    letter-spacing: 4px !important;
+    text-transform: uppercase !important;
+    margin-top: 6px !important;
+    line-height: 1 !important;
+    font-style: normal !important;
+  }
 </style>
 </head>
 <body>
@@ -244,8 +352,8 @@
     <span class="arc-2"></span>
 
     <div class="logo">
-      <div class="logo__mark">L</div>
-      <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+      <div class="logo__mark"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="brand-logo-mark"><circle cx="28" cy="28" r="28" fill="#6F666B"/><path d="M28 13 C22 18 18 22 18 27 C18 32 22 36 28 41 C34 36 38 32 38 27 C38 22 34 18 28 13 Z" fill="#FFC857"/><path d="M28 17 L28 41" stroke="#412234" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+      <div class="logo__type">Linden Family<small>Orthodontics</small></div>
     </div>
 
     <div class="heading">
@@ -253,8 +361,8 @@
       <h1>Mom deserves to feel<br/><span class="confident">confident</span> too.</h1>
     </div>
 
-    <div class="photo"><img class="photo__img" src="photos/MD-01.jpg" alt="Photo MD-01" loading="lazy" />
-      <span class="photo__lbl">[ Photo &middot; MD-01 ]</span>
+    <div class="photo">
+      <img class="photo__img" src="photos/MD-01.jpg" alt="Photo MD-01" loading="lazy" /><span class="photo__lbl">[ Photo · MD-01 ]</span>
       <span class="photo__stamp">
         <div>
           <b>From the<br/>family</b>
@@ -264,7 +372,7 @@
     </div>
 
     <div class="offer-block">
-      <span class="offer-block__amt">$X,XXX <em>off</em></span>
+      <span class="offer-block__amt">$1,500 <em>off</em></span>
       <span class="offer-block__lbl">Giftable · Mother's Day Special</span>
       <div class="offer-block__rule" aria-hidden="true"></div>
     </div>
