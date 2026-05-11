@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Federal Holidays 2026</title>
+<title>Linden Family · Federal Holidays 2026</title>
 <!--
   Campaign: Federal Holidays (MLK Day / Presidents Day) 2026
   Font: Roboto Slab (display) + Inter (UI)
@@ -15,21 +15,25 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300..900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* ============================================================
+     LINDEN FAMILY ORTHODONTICS - BRANDED DEMO (Terracotta + Sage)
+     Fake brand applied to seasonal template. See BRAND-KIT.md.
+     ============================================================ */
   :root {
-    --ink: #131313;
-    --charcoal: #2c2c2c;
-    --graphite: #555;
-    --mid: #898989;
-    --line: #c8c8c8;
-    --soft: #dedede;
-    --paper: #ededed;
-    --bone: #f4f4f4;
+    --ink: #412234;
+    --charcoal: #6F666B;
+    --graphite: #6F666B;
+    --mid: #6F666B;
+    --line: #FFFFFF;
+    --soft: #FFFFFF;
+    --paper: #FFFFFF;
+    --bone: #FFFFFF;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body {
     width: 1080px; height: 1080px;
     overflow: hidden;
-    background: #cfcfcf;
+    background: #FFFFFF;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
@@ -40,11 +44,25 @@
     width: 1080px; height: 1080px;
     background: var(--paper); color: var(--ink);
     position: relative; overflow: hidden;
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,.25);
+    box-shadow: 0 30px 80px -20px rgba(111,102,107,.25);
     display: grid;
     grid-template-rows: auto 1fr auto;
     padding: 56px 60px;
   }
+  /* Ambient brand photo bleed - bottom-right */
+  .ad__bg-photo {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 480px; height: 480px;
+    object-fit: cover;
+    opacity: 0.18;
+    z-index: 0;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: radial-gradient(circle at bottom right, #000 30%, transparent 75%);
+    mask-image: radial-gradient(circle at bottom right, #000 30%, transparent 75%);
+    pointer-events: none;
+  }
+  .top, .hero, .bottom { position: relative; z-index: 1; }
 
   /* Top bar - logo + holiday tag */
   .top {
@@ -225,16 +243,67 @@
     display: inline-flex; align-items: center; gap: 12px;
   }
 
-  .ad__bg-photo {
-    position: absolute; bottom: 0; right: 0;
-    width: 480px; height: 480px; object-fit: cover;
-    opacity: 0.18; z-index: 0; pointer-events: none;
-    mix-blend-mode: multiply;
-    -webkit-mask-image: radial-gradient(circle at bottom right, #000 30%, transparent 75%);
-    mask-image: radial-gradient(circle at bottom right, #000 30%, transparent 75%);
+    /* ============================================================
+     LINDEN FAMILY ORTHODONTICS - BRAND INTEGRATION OVERRIDES
+     Charcoal Blue + Golden Pollen + Tea Green + Midnight Violet
+     ============================================================ */
+  :root {
+    --terra: #FFC857;
+    --terra-deep: #412234;
+    --sage: rgba(111,102,107,0.10);
+    --sage-deep: #6F666B;
+    --sage-dark: #6F666B;
+    --ivory: #FFFFFF;
+    --linden-line: #6F666B;
+    --ink-violet: #412234;
+  }
+  /* Logo mark - charcoal blue circle with golden leaf */
+  .logo__mark {
+    background: #6F666B !important;
+    color: #FFFFFF !important;
+    border-color: #6F666B !important;
+    overflow: hidden;
+    padding: 0;
+  }
+  .logo__mark .brand-logo-mark {
+    width: 100%; height: 100%; display: block;
   }
 
-  /* Photo image placement (over the placeholder backgrounds) */
+  /* CTAs and accent surfaces - golden pollen */
+  .cta, .card__cta, .schedule-btn, .schedule, .consult-pill, .book-cta,
+  .free-pill, .cta-banner, .offer-pill, .offer-bar__btn, .schedule-badge {
+    background: #FFC857 !important;
+    color: #6F666B !important;
+    border-color: #FFC857 !important;
+  }
+  .cta:hover, .card__cta:hover { background: #412234 !important; }
+
+  /* Inverted/dark ads (Black Friday) - midnight violet for max drama */
+  .ad--ink { background: #412234 !important; }
+  .score-bar, .footer-cta__bar { background: #6F666B !important; }
+
+  /* Offer stamps - golden pollen accent */
+  .stamp, .offer-stamp, .ny-stamp {
+    background: #FFC857 !important;
+    color: #6F666B !important;
+    border-color: #FFC857 !important;
+  }
+  .stamp b, .stamp .num, .stamp span { color: #6F666B !important; }
+
+  /* Star ratings, special accents */
+  .proof__stars { color: #FFC857 !important; }
+
+  /* Photo placeholder backgrounds - tea green */
+  .photo, .portrait, .ad-preview {
+    background-color: rgba(111,102,107,0.10) !important;
+  }
+  .photo__lbl, .portrait__lbl {
+    background: #FFFFFF !important;
+    border-color: #6F666B !important;
+    color: #6F666B !important;
+  }
+
+  /* AI image placement */
   .photo__img, .portrait__img {
     position: absolute;
     inset: 0;
@@ -243,9 +312,51 @@
     display: block;
     z-index: 1;
   }
-  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { position: relative; overflow: hidden; } .photo { overflow: hidden; }
   .portrait { border-radius: 50%; }
-  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
+
+  /* Container labels overlaid on top of images */
+  .photo .photo__lbl, .portrait .portrait__lbl, .ad-preview .photo__lbl {
+    z-index: 0;
+  }
+
+  /* Header / sectional ink fills - midnight violet */
+  .holiday-tag, .reserve { border-color: #412234 !important; }
+
+
+  /* === Uniform brand wordmark (Lora) across all ads === */
+  @import url('https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@600;700&display=swap');
+  .logo {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  .logo__mark {
+    width: 56px !important;
+    height: 56px !important;
+    flex-shrink: 0 !important;
+    border-radius: 50% !important;
+  }
+  .logo__type {
+    font-family: 'Lora', Georgia, serif !important;
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: none !important;
+    font-style: normal !important;
+  }
+  .logo__type small {
+    display: block !important;
+    font-family: 'Inter', system-ui, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 9px !important;
+    letter-spacing: 4px !important;
+    text-transform: uppercase !important;
+    margin-top: 6px !important;
+    line-height: 1 !important;
+    font-style: normal !important;
+  }
 </style>
 </head>
 <body>
@@ -253,8 +364,8 @@
     <img class="ad__bg-photo" src="photos/FH-01.jpg" alt="Photo FH-01" onerror="this.style.display='none'" />
     <div class="top">
       <div class="logo">
-        <div class="logo__mark">L</div>
-        <div class="logo__type">[Placeholder Logo]<small>Orthodontics</small></div>
+        <div class="logo__mark"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" class="brand-logo-mark"><circle cx="28" cy="28" r="28" fill="#6F666B"/><path d="M28 13 C22 18 18 22 18 27 C18 32 22 36 28 41 C34 36 38 32 38 27 C38 22 34 18 28 13 Z" fill="#FFC857"/><path d="M28 17 L28 41" stroke="#412234" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+        <div class="logo__type">Linden Family<small>Orthodontics</small></div>
       </div>
       <div class="holiday-tag">
         <b>3-Day Weekend</b>
@@ -270,7 +381,7 @@
         <ul class="points">
           <li>One visit to begin treatment</li>
           <li>No PTO needed · Federal holiday</li>
-          <li>Save $X,XXX on full treatment</li>
+          <li>Save $1,000 on full treatment</li>
         </ul>
       </div>
 
@@ -285,11 +396,11 @@
           <div class="day day--visit">
             <span class="day__lbl">Sun</span>
             <span class="day__num">15</span>
-            <span class="day__bot">★ Visit fits</span>
+            <span class="day__bot">&star; Visit fits</span>
             <span class="day__visit-pin">1 visit</span>
           </div>
           <div class="day day--ink">
-            <span class="day__lbl">Mon · Federal</span>
+            <span class="day__lbl">Mon &middot; Federal</span>
             <span class="day__num">16</span>
             <span class="day__bot">Holiday</span>
           </div>
@@ -300,9 +411,9 @@
     <div class="bottom">
       <div class="bottom__txt">
         <b>Walk out with a plan.</b>
-        Limited holiday availability · Book in 2 minutes
+        Limited holiday availability &middot; Book in 2 minutes
       </div>
-      <a class="cta" href="#">Book Holiday Visit →</a>
+      <a class="cta" href="#">Book Holiday Visit &rarr;</a>
     </div>
   </section>
 </body>
