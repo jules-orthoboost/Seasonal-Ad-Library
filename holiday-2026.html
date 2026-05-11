@@ -223,6 +223,19 @@
     font-size: 22px; letter-spacing: 2px;
     display: inline-block;
   }
+
+  /* Photo image placement (over the placeholder backgrounds) */
+  .photo__img, .portrait__img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { border-radius: 50%; }
+  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
 </style>
 </head>
 <body>
@@ -256,12 +269,12 @@
       <p class="sub">"Confidence is the best gift."</p>
     </div>
 
-    <div class="photo photo--left">
-      <span class="photo__lbl">[ Client ]</span>
+    <div class="photo photo--left"><img class="photo__img" src="photos/HO-01a.jpg" alt="Photo HO-01a" loading="lazy" />
+      <span class="photo__lbl">[ Photo &middot; HO-01a ]</span>
     </div>
 
-    <div class="photo photo--right">
-      <span class="photo__lbl">[ Client ]</span>
+    <div class="photo photo--right"><img class="photo__img" src="photos/HO-01b.jpg" alt="Photo HO-01b" loading="lazy" />
+      <span class="photo__lbl">[ Photo &middot; HO-01b ]</span>
     </div>
 
     <div class="footer-cta">
@@ -270,4 +283,3 @@
   </section>
 </body>
 </html>
-                                 
