@@ -236,10 +236,32 @@
     text-transform: none; display: block;
     margin-bottom: 3px;
   }
+
+  .ad__bg-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0.12; z-index: 0; pointer-events: none;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+  }
+  .score-bar, .bracket-wrap, .footer { position: relative; z-index: 1; }
+
+  /* Photo image placement (over the placeholder backgrounds) */
+  .photo__img, .portrait__img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+  }
+  .photo, .portrait { position: relative; overflow: hidden; }
+  .portrait { border-radius: 50%; }
+  .photo .photo__lbl, .portrait .portrait__lbl { z-index: 0; }
 </style>
 </head>
 <body>
   <section class="ad">
+    <img class="ad__bg-photo" src="photos/MM-01.jpg" alt="Photo MM-01" onerror="this.style.display='none'" />
     <div class="score-bar">
       <div class="logo">
         <div class="logo__mark">L</div>
